@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import model.Tablero;
 
 /**
  * JavaFX App
@@ -17,18 +18,22 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
-        stage.show();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("secondary.fxml"));
+            Parent root = fxmlLoader.load();
+            SecondaryController sc = fxmlLoader.getController();
+            sc.setTablero(new Tablero("O"));                                    
+            scene = new Scene(root,600,600);
+            stage.setScene(scene);
+            stage.setTitle("Tres en Raya");
+            stage.show();
+        } catch(IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+    public static void setRoot(Parent root) {
+        scene.setRoot(root);
     }
 
     public static void main(String[] args) {
