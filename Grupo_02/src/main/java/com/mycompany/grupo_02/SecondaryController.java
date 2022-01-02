@@ -21,7 +21,8 @@ import model.Tablero;
 public class SecondaryController implements Initializable{
     
     private Tablero tablero;
-    private boolean vsCPU = false;
+    private boolean vsCPU = true;
+    private String first = "X";
     @FXML FlowPane panelJuego;
     
     public void draw(){
@@ -86,6 +87,11 @@ public class SecondaryController implements Initializable{
     
     public void setTablero(Tablero t){
         tablero = t;
+        if(first.equals(tablero.getTurno()) && vsCPU){
+            MinimaxClass miniMaxMove = new MinimaxClass(tablero);
+            tablero = miniMaxMove.minimax();           
+        }
+            
         draw();
     }
 

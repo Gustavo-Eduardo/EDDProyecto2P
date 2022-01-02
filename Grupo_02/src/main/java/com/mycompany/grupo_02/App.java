@@ -22,7 +22,7 @@ public class App extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("secondary.fxml"));
             Parent root = fxmlLoader.load();
             SecondaryController sc = fxmlLoader.getController();
-            sc.setTablero(new Tablero("O"));                                    
+            sc.setTablero(new Tablero("X"));                                    
             scene = new Scene(root,600,600);
             stage.setScene(scene);
             stage.setTitle("Tres en Raya");
