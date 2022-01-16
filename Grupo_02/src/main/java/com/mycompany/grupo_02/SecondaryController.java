@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -21,8 +23,8 @@ import model.Tablero;
 public class SecondaryController implements Initializable{
     
     private Tablero tablero;
-    private boolean vsCPU = true;
-    private String first = "X";
+    private boolean vsCPU;
+    private String first;
     @FXML FlowPane panelJuego;
     
     public void draw(){
@@ -45,7 +47,7 @@ public class SecondaryController implements Initializable{
                         tablero = tablero.getMove(posX, posY);
                         draw();
                         afterMove();
-                        if(vsCPU){
+                        if(vsCPU && tablero.getWinner() == null){
                             MinimaxClass miniMaxMove = new MinimaxClass(tablero);
                             tablero = miniMaxMove.minimax();
                             draw();
@@ -74,7 +76,7 @@ public class SecondaryController implements Initializable{
             else
                 mostrarAlerta(tablero.getWinner() + " " + "ha ganado");
             panelJuego.setDisable(true);
-            
+            regresarConfig();
         }
     }
     
@@ -94,10 +96,29 @@ public class SecondaryController implements Initializable{
             
         draw();
     }
+    
+    public void setFirst(String simbolo){
+        first = simbolo;
+    }
+    
+    public void setVsCPU(boolean b){
+        vsCPU = b;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        this.first = "X";
+        this.vsCPU = true;
+    }
+
+    private void regresarConfig() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("PantallaInicio.fxml"));
+            Parent root = fxmlLoader.load();                                 
+            App.setRoot(root);
+        } catch(IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     

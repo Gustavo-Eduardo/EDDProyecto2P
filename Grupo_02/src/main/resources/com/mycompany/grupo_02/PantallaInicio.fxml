@@ -23,14 +23,33 @@
          <children>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0">
                <children>
-                  <Label text="Simbolo">
+                  <Label text="Modo de juego">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="600.0" spacing="30.0">
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="30.0">
+               <children>
+                  <RadioButton fx:id="rbCPU" mnemonicParsing="false" selected="true" text="VS Computadora">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="tgGamemode" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" text="VS Jugador" toggleGroup="$tgGamemode" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0">
+               <children>
+                  <Label text="Simbolo [Jugador 1]">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="30.0">
                <children>
                   <RadioButton fx:id="rbX" mnemonicParsing="false" selected="true" text="X">
                      <toggleGroup>
@@ -42,14 +61,14 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0">
                <children>
-                  <Label text="Inicia primero">
+                  <Label prefHeight="50.0" prefWidth="105.0" text="Primer Turno">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="600.0" spacing="30.0">
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0" spacing="30.0">
                <children>
                   <RadioButton fx:id="rbSi" mnemonicParsing="false" selected="true" text="X">
                      <toggleGroup>

@@ -20,9 +20,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("PantallaInicio.fxml"));
-            Parent root = fxmlLoader.load();
-//            SecondaryController sc = fxmlLoader.getController();
-//            sc.setTablero(new Tablero("X"));                                    
+            Parent root = fxmlLoader.load();                                 
             scene = new Scene(root,600,400);
             stage.setScene(scene);
             stage.setTitle("Tres en Raya");

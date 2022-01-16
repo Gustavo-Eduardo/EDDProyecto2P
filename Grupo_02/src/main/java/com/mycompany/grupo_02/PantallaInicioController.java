@@ -26,6 +26,8 @@ import model.Tablero;
 public class PantallaInicioController implements Initializable {
     
     @FXML
+    private ToggleGroup tgGamemode;
+    @FXML
     private ToggleGroup tgSimbolo;
     @FXML
     private ToggleGroup tgTurno;
@@ -37,6 +39,9 @@ public class PantallaInicioController implements Initializable {
     private RadioButton rbSi;
     @FXML
     private RadioButton rbNo;
+    @FXML
+    private RadioButton rbCPU;
+    
 
     /**
      * Initializes the controller class.
@@ -52,6 +57,14 @@ public class PantallaInicioController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("secondary.fxml"));
             Parent root = fxmlLoader.load();
             SecondaryController sc = fxmlLoader.getController();
+            
+            sc.setVsCPU(rbCPU.isSelected());
+            
+            if(rbX.isSelected()){
+                sc.setFirst("O");
+            } else {
+                sc.setFirst("X");
+            }
             
             if(rbSi.isSelected()){
                 sc.setTablero(new Tablero("X"));
