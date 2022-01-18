@@ -73,10 +73,11 @@ public class SecondaryController implements Initializable{
         if (tablero.getWinner() != null){
             if(tablero.getWinner().equals("empate"))
                 mostrarAlerta("EMPATARON");
-            else
+            else{
                 mostrarAlerta(tablero.getWinner() + " " + "ha ganado");
+            }
             panelJuego.setDisable(true);
-            regresarConfig();
+            
         }
     }
     
@@ -84,6 +85,9 @@ public class SecondaryController implements Initializable{
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
         alert.setHeaderText(mensaje);
+        alert.setOnCloseRequest( ev -> {
+             regresarConfig();
+          });
         alert.show();
     }
     
